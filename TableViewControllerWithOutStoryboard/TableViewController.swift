@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    var window: UIWindow?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
@@ -22,7 +23,14 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Section \(section)"
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return TableData.sharedInstance.items.count
@@ -32,11 +40,7 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return TableData.sharedInstance.items[section].count
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
-    }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TableViewCell
         let imageTree = TableData.sharedInstance.items[indexPath.section][indexPath.row]
@@ -46,8 +50,11 @@ class TableViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let treeVC = TreeViewController()
+        self.navigationController?.pushViewController(treeVC, animated: true)
+        treeVC.view.backgroundColor = .white
     }
+    
 }
