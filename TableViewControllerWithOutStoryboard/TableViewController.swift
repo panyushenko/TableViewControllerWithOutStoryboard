@@ -42,6 +42,8 @@ class TableViewController: UITableViewController {
         let imageTree = TableData.sharedInstance.items[indexPath.section][indexPath.row]
         cell.imageForCell.image = UIImage(named: imageTree)
         cell.labelForSection.text = "Section \(indexPath.section) Row \(indexPath.row)\nName \(imageTree)"
+        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
