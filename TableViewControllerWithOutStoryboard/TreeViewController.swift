@@ -10,27 +10,32 @@ import UIKit
 
 class TreeViewController: UIViewController {
 
-    var someImage: UIImageView?
+    var treeName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+//        let titleLabel = UILabel()
+//        titleLabel.text = "Numbers"
+//        titleLabel.center = CGPoint(x: 100, y: 200)
+//        titleLabel.frame.size = CGSize(width: 100, height: 30)
+//        titleLabel.textAlignment = .left
+//        titleLabel.font = UIFont(name: titleLabel.font.fontName, size: 20)
+//        self.view.addSubview(titleLabel)
+  
+        let imageTree = UIImageView()
+        guard let treeName = treeName else {return}
+        imageTree.image = UIImage(named: treeName)
+        
+        //imageTree.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        //imageTree.frame.size = CGSize(width: 200, height: 200)
+        imageTree.frame = CGRect(x: 70, y: 150, width: 240, height: 240)
+        self.view.addSubview(imageTree)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

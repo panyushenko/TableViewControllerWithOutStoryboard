@@ -9,12 +9,10 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
-    var window: UIWindow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +50,15 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let imageTree = TableData.sharedInstance.items[indexPath.section][indexPath.row]
+        
         let treeVC = TreeViewController()
-        self.navigationController?.pushViewController(treeVC, animated: true)
+        treeVC.treeName = imageTree
         treeVC.view.backgroundColor = .white
+        treeVC.title = "Section \(indexPath.section) Row \(indexPath.row)"
+        self.navigationController?.pushViewController(treeVC, animated: true)
+        
+        
     }
     
 }
