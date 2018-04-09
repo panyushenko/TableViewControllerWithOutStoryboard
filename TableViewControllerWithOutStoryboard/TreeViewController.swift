@@ -15,20 +15,21 @@ class TreeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let titleLabel = UILabel()
-//        titleLabel.text = "Numbers"
-//        titleLabel.center = CGPoint(x: 100, y: 200)
-//        titleLabel.frame.size = CGSize(width: 100, height: 30)
-//        titleLabel.textAlignment = .left
-//        titleLabel.font = UIFont(name: titleLabel.font.fontName, size: 20)
-//        self.view.addSubview(titleLabel)
+        guard let treeName = treeName else {return}
+        
+        let titleLabel = UILabel()
+        titleLabel.text = treeName
+        titleLabel.center = CGPoint(x: 140, y: 100)
+        titleLabel.frame.size = CGSize(width: 100, height: 30)
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: titleLabel.font.fontName, size: 20)
+        self.view.addSubview(titleLabel)
   
         let imageTree = UIImageView()
-        guard let treeName = treeName else {return}
         imageTree.image = UIImage(named: treeName)
         
         //imageTree.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
+        //SnapKit - library
         //imageTree.frame.size = CGSize(width: 200, height: 200)
         imageTree.frame = CGRect(x: 70, y: 150, width: 240, height: 240)
         self.view.addSubview(imageTree)
